@@ -65,5 +65,15 @@ namespace CalculatorKata.Tests
             Assert.AreEqual(expectedValue, m_Calculator.Add(inputString));
         }
 
+        [Test]
+        [TestCase("0,0\n0", 0)]
+        [TestCase("0\n0\n1", 1)]
+        [TestCase("10\n-20\n30,-40", -20)]
+        [TestCase("999\n999\n999,999", 3996)]
+        [TestCase("1,1,1,1,1,1\n1,1,1,1\n1,1,1\n1\n1,1,1,1,1,1", 20)]
+        public void NumbersCanBeSplitByCommaOrNewline(string inputString, int expectedValue)
+        {
+            Assert.AreEqual(expectedValue, m_Calculator.Add(inputString));
+        }
     }
 }
