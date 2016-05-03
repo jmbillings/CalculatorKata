@@ -23,5 +23,15 @@ namespace CalculatorKata.Tests
         {
             Assert.AreEqual(0, m_Calculator.Add(""));
         }
+
+        [Test]
+        [TestCase("0", 0)]
+        [TestCase("1", 1)]
+        [TestCase("10", 10)]
+        [TestCase("999", 999)]
+        public void SingleNumberStringShouldReturnTheSameNumber(string inputString, int expectedValue)
+        {
+            Assert.AreEqual(expectedValue, m_Calculator.Add(inputString));
+        }
     }
 }
