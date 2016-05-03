@@ -16,7 +16,20 @@ namespace CalculatorKata
                 return 0;
 
             int returnValue;
-            int.TryParse(numbers, out returnValue);
+
+            if (numbers.Contains(','))
+            {
+                string[] numbersToAdd = numbers.Split(',');
+                int firstNumber;
+                int secondNumber;
+                int.TryParse(numbersToAdd[0], out firstNumber);
+                int.TryParse(numbersToAdd[1], out secondNumber);
+                returnValue = firstNumber + secondNumber;
+            }
+            else
+            {
+                int.TryParse(numbers, out returnValue);
+            }
             return returnValue;
         }
     }
