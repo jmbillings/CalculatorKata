@@ -29,11 +29,16 @@ namespace CalculatorKata
         private int AddMultipleNumbers(string numbers)
         {
             string[] numbersToAdd = numbers.Split(',');
-            int firstNumber;
-            int secondNumber;
-            int.TryParse(numbersToAdd[0], out firstNumber);
-            int.TryParse(numbersToAdd[1], out secondNumber);
-            return firstNumber + secondNumber;
+            int returnValue = 0;
+
+            foreach (var number in numbersToAdd)
+            {
+                int currentNumber;
+                int.TryParse(number, out currentNumber);
+                returnValue = returnValue + currentNumber;
+            }
+
+            return returnValue;
         }
     }
 }
