@@ -23,6 +23,8 @@ namespace CalculatorKata
             }
 
             int.TryParse(numbers, out returnValue);
+            if (returnValue < 0)
+                throw new Exception("negatives not allowed " + numbers);
             return returnValue;
         }
 
@@ -30,12 +32,22 @@ namespace CalculatorKata
         {
             string[] numbersToAdd = numbers.Split(GetDelimiters(numbers));
             int returnValue = 0;
+            StringBuilder negativeNumbers = new StringBuilder();
 
             foreach (var number in numbersToAdd)
             {
                 int currentNumber;
                 int.TryParse(number, out currentNumber);
+                if (currentNumber < 0)
+                    negativeNumbers.Append(' ' + number);
+
                 returnValue = returnValue + currentNumber;
+            }
+
+            if (negativeNumbers.Length > 0)
+            {
+                //we have some negative numbers
+                throw new Exception("negatives not allowed" + negativeNumbers.ToString());
             }
 
             return returnValue;
