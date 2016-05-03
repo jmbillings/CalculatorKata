@@ -19,18 +19,21 @@ namespace CalculatorKata
 
             if (numbers.Contains(','))
             {
-                string[] numbersToAdd = numbers.Split(',');
-                int firstNumber;
-                int secondNumber;
-                int.TryParse(numbersToAdd[0], out firstNumber);
-                int.TryParse(numbersToAdd[1], out secondNumber);
-                returnValue = firstNumber + secondNumber;
+                return AddMultipleNumbers(numbers);
             }
-            else
-            {
-                int.TryParse(numbers, out returnValue);
-            }
+
+            int.TryParse(numbers, out returnValue);
             return returnValue;
+        }
+
+        private int AddMultipleNumbers(string numbers)
+        {
+            string[] numbersToAdd = numbers.Split(',');
+            int firstNumber;
+            int secondNumber;
+            int.TryParse(numbersToAdd[0], out firstNumber);
+            int.TryParse(numbersToAdd[1], out secondNumber);
+            return firstNumber + secondNumber;
         }
     }
 }
