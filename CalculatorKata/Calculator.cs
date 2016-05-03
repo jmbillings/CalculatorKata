@@ -28,7 +28,7 @@ namespace CalculatorKata
 
         private int AddMultipleNumbers(string numbers)
         {
-            string[] numbersToAdd = numbers.Split(new char[] { ',', '\n' });
+            string[] numbersToAdd = numbers.Split(GetDelimiters(numbers));
             int returnValue = 0;
 
             foreach (var number in numbersToAdd)
@@ -39,6 +39,16 @@ namespace CalculatorKata
             }
 
             return returnValue;
+        }
+
+        private char[] GetDelimiters(string numbers)
+        {
+            if (numbers.StartsWith("//"))
+            {
+                return new char[] { numbers[2], ',', '\n' }; //custom delimiter character will be 3rd in string
+            }
+
+            return new char[] { ',', '\n' };
         }
     }
 }
