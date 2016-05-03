@@ -75,5 +75,16 @@ namespace CalculatorKata.Tests
         {
             Assert.AreEqual(expectedValue, m_Calculator.Add(inputString));
         }
+
+        [Test]
+        [TestCase("//!\n1", 1)]
+        [TestCase("//!\n1,1", 2)]
+        [TestCase("//!\n1!1", 2)]
+        [TestCase("//!\n1!1\n1,1", 4)]
+        [TestCase("//a\n10a-20a-30",-40)]
+        public void CustomDelimiterCanBeUsedToSplitNumbers(string inputString,int expectedValue)
+        {
+            Assert.AreEqual(expectedValue, m_Calculator.Add(inputString));
+        }
     }
 }
