@@ -79,9 +79,20 @@ namespace CalculatorKata.Tests
         [TestCase("//!\n1!1", 2)]
         [TestCase("//!\n1!1\n1,1", 4)]
         [TestCase("//a\n10a20a30", 60)]
-        public void CustomDelimiterCanBeUsedToSplitNumbers(string inputString,int expectedValue)
+        public void CustomDelimiterCanBeUsedToSplitNumbers(string inputString, int expectedValue)
         {
             Assert.AreEqual(expectedValue, m_Calculator.Add(inputString));
         }
+
+        [Test]
+        [TestCase("-1", "negatives not allowed -1")]
+        [TestCase("-1,-2,3,4", "negatives not allowed -1 -2")]
+        [TestCase("100,200,-300", "negatives not allowed -300")]
+        public void NegativeNumbersThrowExceptionContainingTheNegativeNumbers(string inputString, string expectedExceptionMessage)
+        {
+            Exception thrownException = Assert.Throws<Exception>(() => m_Calculator.Add(inputString));         
+            Assert.That(thrownException.Message, Is.EqualTo(expectedExceptionMessage));
+        }
+
     }
 }
