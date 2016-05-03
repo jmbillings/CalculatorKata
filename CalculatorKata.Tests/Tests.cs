@@ -28,6 +28,8 @@ namespace CalculatorKata.Tests
         [TestCase("0", 0)]
         [TestCase("1", 1)]
         [TestCase("10", 10)]
+        [TestCase("-1", -1)]
+        [TestCase("-100", -100)]
         [TestCase("999", 999)]
         public void SingleNumberStringShouldReturnTheSameNumber(string inputString, int expectedValue)
         {
@@ -38,6 +40,9 @@ namespace CalculatorKata.Tests
         [TestCase("0,0", 0)]
         [TestCase("0,1", 1)]
         [TestCase("1,1", 2)]
+        [TestCase("-1,1", 0)]
+        [TestCase("-10,1", -9)]
+        [TestCase("10, -1", 9)]
         [TestCase("10,10", 20)]
         [TestCase("999,999", 1998)]
         public void DoubleNumberStringShouldReturnTheSumOfTheNumbers(string inputString, int expectedValue)
@@ -52,6 +57,7 @@ namespace CalculatorKata.Tests
         [TestCase("1,1,1", 3)]
         [TestCase("1,1,1,1",4)]
         [TestCase("10,10,10", 30)]
+        [TestCase("10,-20,30,-40", -20)]
         [TestCase("999,999,999,999", 3996)]
         [TestCase("1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1", 20)]
         public void StringOfAnyNumbersShouldReturnTheSumOfTheNumbers(string inputString, int expectedValue)
