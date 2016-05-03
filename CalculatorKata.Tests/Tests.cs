@@ -33,5 +33,16 @@ namespace CalculatorKata.Tests
         {
             Assert.AreEqual(expectedValue, m_Calculator.Add(inputString));
         }
+
+        [Test]
+        [TestCase("0,0", 0)]
+        [TestCase("0,1", 1)]
+        [TestCase("1,1", 2)]
+        [TestCase("10,10", 20)]
+        [TestCase("999,999", 1998)]
+        public void DoubleNumberStringShouldReturnTheSumOfTheNumbers(string inputString, int expectedValue)
+        {
+            Assert.AreEqual(expectedValue, m_Calculator.Add(inputString));
+        }
     }
 }
