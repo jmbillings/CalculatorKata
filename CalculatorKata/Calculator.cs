@@ -12,7 +12,12 @@ namespace CalculatorKata
 
         public int Add(string numbers)
         {
-            return 0;
+            if (numbers == string.Empty)
+                return 0;
+
+            int returnValue;
+            int.TryParse(numbers, out returnValue);
+            return returnValue;
         }
     }
 }
