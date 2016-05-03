@@ -17,7 +17,7 @@ namespace CalculatorKata
 
             int returnValue;
 
-            if (numbers.Contains(','))
+            if (numbers.Contains(',') || numbers.Contains('\n'))
             {
                 return AddMultipleNumbers(numbers);
             }
@@ -28,7 +28,7 @@ namespace CalculatorKata
 
         private int AddMultipleNumbers(string numbers)
         {
-            string[] numbersToAdd = numbers.Split(',');
+            string[] numbersToAdd = numbers.Split(new char[] { ',', '\n' });
             int returnValue = 0;
 
             foreach (var number in numbersToAdd)
