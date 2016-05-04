@@ -13,21 +13,7 @@ namespace CalculatorKata
             if (numbers == string.Empty)
                 return 0;
 
-            int returnValue;
-
-            if (numbers.Contains(',') || numbers.Contains('\n'))
-            {
-                return AddMultipleNumbers(numbers);
-            }
-
-            int.TryParse(numbers, out returnValue);
-
-            if (returnValue > 1000)
-                return 0;
-
-            if (returnValue < 0)
-                throw new Exception("negatives not allowed " + numbers);
-            return returnValue;
+            return AddMultipleNumbers(numbers);
         }
 
         private int AddMultipleNumbers(string numbers)
