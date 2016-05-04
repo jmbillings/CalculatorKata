@@ -105,5 +105,14 @@ namespace CalculatorKata.Tests
             Assert.AreEqual(expectedValue, m_Calculator.Add(inputString));
         }
 
+        [Test]
+        [TestCase("//[!]\n1", 1)]
+        [TestCase("//[!!!]\n1!!!1", 2)]
+        [TestCase("//[###]\n1###1###1###1###1", 5)]
+        [TestCase("//[aaaaaa]\n1,1\n1aaaaaa1", 4)]
+        public void CustomLengthDelimitersCanBeSpecified(string inputString, int expectedValue)
+        {
+            Assert.AreEqual(expectedValue, m_Calculator.Add(inputString));
+        }
     }
 }
