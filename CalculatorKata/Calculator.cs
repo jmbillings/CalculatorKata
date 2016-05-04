@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace CalculatorKata
 {
@@ -46,10 +47,26 @@ namespace CalculatorKata
         {
             if (numbers.StartsWith("//"))
             {
+                //Get the Custom delimiter...
+                string customDelimiter = GetCustomDelimiter(numbers);
+                
+
+
                 return new char[] { numbers[2], ',', '\n' }; //custom delimiter character will be 3rd in string
             }
 
             return new char[] { ',', '\n' };
+        }
+
+        private string GetCustomDelimiter(string numbers)
+        {
+            string delimiterExtractingRegex = @"(?<=\/\/\[).+?(?=\])";
+
+            foreach (Match match in Regex.Matches(numbers, delimiterExtractingRegex, RegexOptions.Multiline))
+            {
+                return match.ToString();
+            }
+            return "";
         }
     }
 }
