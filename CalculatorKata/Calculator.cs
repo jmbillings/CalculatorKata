@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace CalculatorKata
 {
@@ -23,6 +21,10 @@ namespace CalculatorKata
             }
 
             int.TryParse(numbers, out returnValue);
+
+            if (returnValue > 1000)
+                return 0;
+
             if (returnValue < 0)
                 throw new Exception("negatives not allowed " + numbers);
             return returnValue;
@@ -41,7 +43,8 @@ namespace CalculatorKata
                 if (currentNumber < 0)
                     negativeNumbers.Append(' ' + number);
 
-                returnValue = returnValue + currentNumber;
+                if (currentNumber < 1001)
+                    returnValue = returnValue + currentNumber;
             }
 
             if (negativeNumbers.Length > 0)
