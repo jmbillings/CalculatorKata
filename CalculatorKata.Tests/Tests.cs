@@ -94,5 +94,15 @@ namespace CalculatorKata.Tests
             Assert.That(thrownException.Message, Is.EqualTo(expectedExceptionMessage));
         }
 
+        [Test]
+        [TestCase("1,1000", 1001)]
+        [TestCase("1001,1001,1000", 1000)]
+        [TestCase("1,1001",1)]
+        [TestCase("1,2,3,4,9999",10)]
+        public void NumbersGreaterThan1000AreIgnored(string inputString, int expectedValue)
+        {
+            Assert.AreEqual(expectedValue, m_Calculator.Add(inputString));
+        }
+
     }
 }
