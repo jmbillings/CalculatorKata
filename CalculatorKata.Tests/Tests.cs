@@ -95,6 +95,7 @@ namespace CalculatorKata.Tests
         }
 
         [Test]
+        [TestCase("1001", 0)]
         [TestCase("1,1000", 1001)]
         [TestCase("1001,1001,1000", 1000)]
         [TestCase("1,1001",1)]
