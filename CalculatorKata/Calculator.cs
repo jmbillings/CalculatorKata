@@ -19,7 +19,7 @@ namespace CalculatorKata
 
         private int AddMultipleNumbers(string numbers)
         {
-            string[] numbersToAdd = numbers.Split(GetDelimiters(numbers));
+            string[] numbersToAdd = numbers.Split(GetDelimiters(numbers), StringSplitOptions.RemoveEmptyEntries);
             int returnValue = 0;
             StringBuilder negativeNumbers = new StringBuilder();
 
@@ -43,19 +43,17 @@ namespace CalculatorKata
             return returnValue;
         }
 
-        private char[] GetDelimiters(string numbers)
+        private string[] GetDelimiters(string numbers)
         {
             if (numbers.StartsWith("//"))
             {
                 //Get the Custom delimiter...
                 string customDelimiter = GetCustomDelimiter(numbers);
-                
 
-
-                return new char[] { numbers[2], ',', '\n' }; //custom delimiter character will be 3rd in string
+                return new[] { customDelimiter, ",", "\n" }; //custom delimiter character will be 3rd in string
             }
 
-            return new char[] { ',', '\n' };
+            return new[] { ",", "\n" };
         }
 
         private string GetCustomDelimiter(string numbers)
@@ -66,7 +64,8 @@ namespace CalculatorKata
             {
                 return match.ToString();
             }
-            return "";
+            //if no match, we might have a single length delimiter
+            return numbers[2].ToString();
         }
     }
 }
